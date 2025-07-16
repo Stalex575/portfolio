@@ -1,6 +1,5 @@
-import logo from "./logo.svg";
 import "./App.css";
-import HomePage from "./home";
+import HomePage from "./HomePage";
 
 function App() {
   return <HomePage />;

@@ -25,6 +25,10 @@
 
 /* --------------- GLOBAL ------------- */
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -124,6 +128,14 @@ body {
   width: 100%;
   padding-top: 40px;
   flex: 1;
+  position: relative;
+}
+
+.navigation-item-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .navigation-item {
@@ -133,8 +145,147 @@ body {
   letter-spacing: 2px;
   transition: 0.2s ease-in-out;
   border-radius: 50%;
+  position: relative;
+  z-index: 2;
 }
 
 .navigation-item:hover {
-  text-shadow: #ffffff9b 0px 0px 30px;
+  text-shadow: #777777 0px 0px 30px;
 }
+
+.overlay {
+  -webkit-backdrop-filter: invert(100%);
+  backdrop-filter: invert(100%);
+  position: fixed;
+  top: 0;
+  width: 33.33vw;
+  height: 100vh;
+  transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+  z-index: 1;
+  pointer-events: none;
+  left: -33.33vw;
+  opacity: 0;
+}
+
+.navigation-container:hover .overlay {
+  opacity: 1;
+}
+
+.navigation-item-wrapper:nth-child(1):hover ~ .overlay,
+.navigation-item-wrapper:nth-child(1):hover .overlay {
+  left: 0;
+}
+
+.navigation-item-wrapper:nth-child(2):hover ~ .overlay,
+.navigation-item-wrapper:nth-child(2):hover .overlay {
+  left: 33.33vw;
+}
+
+.navigation-item-wrapper:nth-child(3):hover ~ .overlay,
+.navigation-item-wrapper:nth-child(3):hover .overlay {
+  left: 66.66vw;
+}
+
+.navigation-item-wrapper:hover .navigation-item {
+  color: transparent;
+  -webkit-text-stroke: 1px #000;
+}
+
+
+/* -------------- ABOUT -------------- */
+
+.about-container {
+  display: flex;
+  align-items: end;
+  /* justify-content: center; */
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  padding: 70px;
+  background: url('./assets/images/herobg3.jpg') no-repeat;
+  background-size: cover;
+}
+
+.about-img {
+  position: absolute;
+  height: 90%;
+  left: 9%;
+}
+
+.about-title-wrapper {
+  width: 100%;
+}
+
+.about-title {
+  font-family: 'Franie-ExtraBold', sans-serif;
+  font-size: 10rem;
+  margin-bottom: 20px;
+  /* padding-left: 20 px; */
+  letter-spacing: 5px;
+}
+
+.about-content {
+  width: 40%;
+  font-family: 'Franie-Light', sans-serif;
+  letter-spacing: 1.4px;
+}
+
+.about-stack {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.about-stack-title {
+  font-family: 'Franie-Regular', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+/* 1) Remove default bullet */
+.about-stack-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 2) Inject “*” before each li */
+.about-stack-item {
+  margin-top: 10px;
+  position: relative;
+  padding-left: 1.2em; /* space for the star */
+}
+
+.about-stack-item::before {
+  content: "*";
+  font-size: 2rem;
+  position: absolute;
+  left: 0;
+  color: currentColor;  /* matches the text color */
+}
+
+.star-accent {
+  font-size: 12rem;
+  position: absolute;
+  display: block;
+  top: 80%;
+  left: 25%;
+  color: #fff;
+  transform-origin: center;       /* pivot at the box’s centre */
+  animation: star-rotate 15s linear infinite;
+}
+
+.star-accent p {
+  padding-top: 30px;
+}
+
+@keyframes star-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
