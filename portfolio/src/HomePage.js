@@ -3,6 +3,9 @@ export default function HomePage() {
   return (
     <main>
       <header className="hero">
+        <div className="star-accent">
+          <p>*</p>
+        </div>
         <div className="title-container">
           <h1 className="title">
             <span className="title-letter">H</span>
@@ -58,7 +61,10 @@ export default function HomePage() {
       </header>
       <section className="about-container" id="about">
         <img src={imageOfMe} alt="Me" className="about-img"></img>
-        <div className="star-accent">
+        <div className="star-accent" id="star-accent-1">
+          <p>*</p>
+        </div>
+        <div className="star-accent" id="star-accent-2">
           <p>*</p>
         </div>
         <div className="about-title-wrapper">
@@ -70,17 +76,18 @@ export default function HomePage() {
             for designing and developing websites and web applications.
             <br />I love turning ideas into reality by crafting seamless,
             intuitive user experiences. Whether it's building something from the
-            ground up or optimizing existing systems, I focus on delivering
-            tailored, meaningful solutions that meet both user and business
-            needs.
+            ground up or optimizing existing systems.
+            <br />I focus on delivering tailored, meaningful solutions that meet
+            both user and business needs.
           </p>
           <div className="about-stack">
             <h3 className="about-stack-title">My stack:</h3>
             <ul className="about-stack-list">
+              <li className="about-stack-item">React</li>
               <li className="about-stack-item">HTML</li>
               <li className="about-stack-item">CSS</li>
               <li className="about-stack-item">JavaScript</li>
-              <li className="about-stack-item">React</li>
+              <li className="about-stack-item">Python</li>
               <li className="about-stack-item">Git</li>
             </ul>
           </div>

@@ -153,6 +153,13 @@ body {
   text-shadow: #777777 0px 0px 30px;
 }
 
+.hero .star-accent {
+  top: -35%;
+  right: 10%;
+  font-size: 30rem;
+  padding-top: 50px;
+}
+
 .overlay {
   -webkit-backdrop-filter: invert(100%);
   backdrop-filter: invert(100%);
@@ -195,6 +202,7 @@ body {
 /* -------------- ABOUT -------------- */
 
 .about-container {
+  position: relative;
   display: flex;
   align-items: end;
   /* justify-content: center; */
@@ -210,6 +218,7 @@ body {
   position: absolute;
   height: 90%;
   left: 9%;
+  z-index: 10;
 }
 
 .about-title-wrapper {
@@ -266,19 +275,30 @@ body {
 }
 
 .star-accent {
-  font-size: 12rem;
   position: absolute;
-  display: block;
-  top: 80%;
-  left: 25%;
   color: #fff;
   transform-origin: center;       /* pivot at the box’s centre */
-  animation: star-rotate 15s linear infinite;
+  animation: star-rotate 20s linear infinite;
+}
+
+#star-accent-1 {
+  top: 20%;
+  left: 30%;
+  font-size: 30rem;
+  padding-top: 50px;
+}
+
+#star-accent-2 {
+  top: -5%;
+  left: 8%;
+  font-size: 30rem;
+  padding-top: 50px;
 }
 
 .star-accent p {
   padding-top: 30px;
 }
+
 
 @keyframes star-rotate {
   0% {
