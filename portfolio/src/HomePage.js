@@ -10,22 +10,40 @@ import GitHubIcon from "./assets/images/github.png";
 import PostmanIcon from "./assets/images/postman.svg";
 import ExodusImg1 from "./assets/images/exodus1.png";
 import ExodusImg2 from "./assets/images/exodus2.png";
+import ExodusImg3 from "./assets/images/exodus3.png";
+import ExodusImg4 from "./assets/images/exodus4.png";
 import FilmExpImg1 from "./assets/images/filmexp1.png";
 import FilmExpImg2 from "./assets/images/filmexp2.png";
 import FilmExpImg3 from "./assets/images/filmexp3.png";
 import MistectvoImg1 from "./assets/images/mistectvo1.png";
 import MistectvoImg2 from "./assets/images/mistectvo2.png";
 import MistectvoImg3 from "./assets/images/mistectvo3.png";
+import MistectvoImg4 from "./assets/images/mistectvo4.png";
 import TodoImg1 from "./assets/images/todo1.png";
 import TodoImg2 from "./assets/images/todo2.png";
+import TodoImg3 from "./assets/images/todo3.png";
+import Asterisk from "./assets/images/asterisk.svg";
+import GithubSvg from "./assets/images/github.svg";
+import LinkedInSvg from "./assets/images/linkedin.svg";
+import TelegramSvg from "./assets/images/telegram.svg";
+import ArrowIcon from "./assets/images/arrow.svg";
 
 export default function HomePage() {
   const [currentBackground, setCurrentBackground] = useState("hero");
   const [expandedCard, setExpandedCard] = useState(null);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 200) {
+      setShowBackToTop(true);
+    } else {
+      setShowBackToTop(false);
+    }
+  });
 
   useEffect(() => {
     const sections = document.querySelectorAll(
-      ".hero, .about-container, .projects-container"
+      ".hero, .about-container, .projects-container, .contacts-container"
     );
 
     const observer = new IntersectionObserver(
@@ -38,6 +56,8 @@ export default function HomePage() {
               setCurrentBackground("about");
             } else if (entry.target.classList.contains("projects-container")) {
               setCurrentBackground("projects");
+            } else if (entry.target.classList.contains("contacts-container")) {
+              setCurrentBackground("contacts");
             }
           }
         });
@@ -64,7 +84,12 @@ export default function HomePage() {
 
   return (
     <main>
-      {/* Dynamic Background Container */}
+      <a
+        className={`back-to-top ${showBackToTop ? "visible" : ""}`}
+        href="#hero"
+      >
+        <img src={ArrowIcon} alt="Back to top" />
+      </a>
       <div className="dynamic-background">
         <div
           className={`background-layer ${
@@ -84,11 +109,17 @@ export default function HomePage() {
           }`}
           data-bg="projects"
         ></div>
+        <div
+          className={`background-layer ${
+            currentBackground === "contacts" ? "active" : ""
+          }`}
+          data-bg="contacts"
+        ></div>
       </div>
 
-      <header className="hero">
+      <header className="hero" id="hero">
         <div className="star-accent">
-          <p>*</p>
+          <img src={Asterisk} alt="Asterisk" />
         </div>
         <div className="title-container">
           <h1 className="title">
@@ -146,10 +177,10 @@ export default function HomePage() {
       <section className="about-container" id="about">
         <img src={imageOfMe} alt="Me" className="about-img"></img>
         <div className="star-accent" id="star-accent-1">
-          <p>*</p>
+          <img src={Asterisk} alt="Asterisk" />
         </div>
         <div className="star-accent" id="star-accent-2">
-          <p>*</p>
+          <img src={Asterisk} alt="Asterisk" />
         </div>
         <div className="about-title-wrapper">
           <h2 className="about-title">About me</h2>
@@ -168,18 +199,6 @@ export default function HomePage() {
             <h3 className="about-stack-title">My stack:</h3>
             <div className="about-stack-container">
               <div className="about-stack-item">
-                <img src={HTMLIcon} alt="HTML5" />
-                <label>HTML</label>
-              </div>
-              <div className="about-stack-item">
-                <img src={CSSIcon} alt="CSS3" />
-                <label>CSS</label>
-              </div>
-              <div className="about-stack-item">
-                <img src={JSIcon} alt="JavaScript" />
-                <label>JavaScript</label>
-              </div>
-              <div className="about-stack-item">
                 <img src={ReactIcon} alt="React" />
                 <label>React</label>
               </div>
@@ -187,6 +206,19 @@ export default function HomePage() {
                 <img src={PythonIcon} alt="Python" />
                 <label>Python</label>
               </div>
+              <div className="about-stack-item">
+                <img src={JSIcon} alt="JavaScript" />
+                <label>JavaScript</label>
+              </div>
+              <div className="about-stack-item">
+                <img src={HTMLIcon} alt="HTML5" />
+                <label>HTML</label>
+              </div>
+              <div className="about-stack-item">
+                <img src={CSSIcon} alt="CSS3" />
+                <label>CSS</label>
+              </div>
+
               <div className="about-stack-item">
                 <img src={GitIcon} alt="Git" />
                 <label>Git</label>
@@ -217,13 +249,56 @@ export default function HomePage() {
           <h2 className="projects-title">Projects</h2>
         </div>
         <div className="projects-content">
+          <div className="star-accent" id="star-accent-3">
+            <img src={Asterisk} alt="Asterisk" />
+          </div>
+          <div className="star-accent" id="star-accent-4">
+            <img src={Asterisk} alt="Asterisk" />
+          </div>
+          <div className="star-accent" id="star-accent-5">
+            <img src={Asterisk} alt="Asterisk" />
+          </div>
+          <div className="star-accent" id="star-accent-6">
+            <img src={Asterisk} alt="Asterisk" />
+          </div>
           <div className="projects-card">
             <div className="projects-card-text">
               <h3>Exodus</h3>
               <p>
-                Find best routes to evacuate citizens from Ukrainian warzone.
-                Made to suit any circumstances. For your convenience.
+                Exodus is a web-based evacuation assistant that empowers
+                ukrainians to plan safe, personalized escape routes in
+                real-time. By interacting directly with a dynamic OpenStreetMap
+                interface, users can select start and end points, visualize
+                optimized paths, and simulate real-world obstacles to adapt
+                their evacuation strategy. With a focus on intuitive design and
+                user control, Exodus blends intelligent routing with visual
+                clarity — turning emergency navigation into an interactive,
+                accessible experience.
               </p>
+              <div className="projects-card-stack-container">
+                <div className="about-stack-item">
+                  <img src={ReactIcon} alt="React" />
+                  <label>React</label>
+                </div>
+                <div className="about-stack-item">
+                  <img src={PythonIcon} alt="Python" />
+                  <label>Python</label>
+                </div>
+                <div className="about-stack-item">
+                  <img src={JSIcon} alt="JavaScript" />
+                  <label>JavaScript</label>
+                </div>
+
+                <div className="about-stack-item">
+                  <img src={HTMLIcon} alt="HTML5" />
+                  <label>HTML</label>
+                </div>
+
+                <div className="about-stack-item">
+                  <img src={CSSIcon} alt="CSS3" />
+                  <label>CSS</label>
+                </div>
+              </div>
             </div>
             <div
               className={`projects-card-images-wrapper ${
@@ -248,15 +323,41 @@ export default function HomePage() {
               <div className="projects-card-image">
                 <img src={ExodusImg2} alt="Project screenshot 2" />
               </div>
+              <div className="projects-card-image">
+                <img src={ExodusImg3} alt="Project screenshot 3" />
+              </div>
+              <div className="projects-card-image">
+                <img src={ExodusImg4} alt="Project screenshot 4" />
+              </div>
             </div>
           </div>
           <div className="projects-card">
             <div className="projects-card-text">
               <h3>Mistectvo</h3>
               <p>
-                Interactive responsive website about Art subject at school with
-                learning materials to help kids study.
+                Mistectvo is an interactive and responsive educational website
+                designed to support middle school students in learning Art and
+                Music. It offers engaging learning materials tailored to school
+                curricula, a clean and intuitive design, and a built-in drawing
+                board feature that encourages creativity and hands-on
+                exploration.
               </p>
+              <div className="projects-card-stack-container">
+                <div className="about-stack-item">
+                  <img src={JSIcon} alt="JavaScript" />
+                  <label>JavaScript</label>
+                </div>
+
+                <div className="about-stack-item">
+                  <img src={HTMLIcon} alt="HTML5" />
+                  <label>HTML</label>
+                </div>
+
+                <div className="about-stack-item">
+                  <img src={CSSIcon} alt="CSS3" />
+                  <label>CSS</label>
+                </div>
+              </div>
             </div>
             <div
               className={`projects-card-images-wrapper ${
@@ -284,12 +385,37 @@ export default function HomePage() {
               <div className="projects-card-image">
                 <img src={MistectvoImg3} alt="Project screenshot 3" />
               </div>
+              <div className="projects-card-image">
+                <img src={MistectvoImg4} alt="Project screenshot 4" />
+              </div>
             </div>
           </div>
           <div className="projects-card">
             <div className="projects-card-text">
               <h3>FilmExplorer</h3>
-              <p>Movie search website on native JS using OMDB API.</p>
+              <p>
+                FilmExplorer is a sleek, minimalistic web app that connects to
+                the OMDb API, allowing users to search for movies and explore
+                detailed information about them. With its clean interface and
+                distinctive yellow accents, it offers a smooth and intuitive
+                experience for film enthusiasts.
+              </p>
+              <div className="projects-card-stack-container">
+                <div className="about-stack-item">
+                  <img src={JSIcon} alt="JavaScript" />
+                  <label>JavaScript</label>
+                </div>
+
+                <div className="about-stack-item">
+                  <img src={HTMLIcon} alt="HTML5" />
+                  <label>HTML</label>
+                </div>
+
+                <div className="about-stack-item">
+                  <img src={CSSIcon} alt="CSS3" />
+                  <label>CSS</label>
+                </div>
+              </div>
             </div>
             <div
               className={`projects-card-images-wrapper ${
@@ -322,7 +448,35 @@ export default function HomePage() {
           <div className="projects-card">
             <div className="projects-card-text">
               <h3>To-do List</h3>
-              <p>A simple yet useful to-do list on React.</p>
+              <p>
+                To-Do List is a simple yet powerful task management app designed
+                for clarity and productivity. Users can create projects,
+                organize tasks with priorities (color-coded in red, orange, and
+                yellow), add due dates and detailed descriptions. With intuitive
+                controls to add, edit, or remove tasks, and a smart search bar
+                to filter by priority, name, or description, it makes staying
+                organized effortless.
+              </p>
+              <div className="projects-card-stack-container">
+                <div className="about-stack-item">
+                  <img src={ReactIcon} alt="React" />
+                  <label>React</label>
+                </div>
+                <div className="about-stack-item">
+                  <img src={JSIcon} alt="JavaScript" />
+                  <label>JavaScript</label>
+                </div>
+
+                <div className="about-stack-item">
+                  <img src={HTMLIcon} alt="HTML5" />
+                  <label>HTML</label>
+                </div>
+
+                <div className="about-stack-item">
+                  <img src={CSSIcon} alt="CSS3" />
+                  <label>CSS</label>
+                </div>
+              </div>
             </div>
             <div
               className={`projects-card-images-wrapper ${
@@ -347,10 +501,51 @@ export default function HomePage() {
               <div className="projects-card-image">
                 <img src={TodoImg2} alt="Project screenshot 2" />
               </div>
+              <div className="projects-card-image">
+                <img src={TodoImg3} alt="Project screenshot 3" />
+              </div>
             </div>
           </div>
         </div>
       </section>
+      <footer className="contacts-container" id="contact">
+        <h3 className="contacts-subtitle">Got a project in mind?</h3>
+        <h2 className="contacts-title">Let's get in touch!</h2>
+        <div className="contacts-btn-container">
+          <a className="contacts-mail" href="mailto:stadnick007@gmail.com">
+            Message me!
+          </a>
+        </div>
+        <div className="contacts-socials">
+          <a
+            href="https://github.com/Stalex575"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contacts-socials-link"
+          >
+            <img src={GithubSvg} alt="GitHub" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/stalex"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contacts-socials-link"
+          >
+            <img src={LinkedInSvg} alt="LinkedIn" />
+          </a>
+          <a
+            href="https://t.me/St4lex"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contacts-socials-link"
+          >
+            <img src={TelegramSvg} alt="Telegram" />
+          </a>
+        </div>
+        <div className="star-accent" id="star-accent-7">
+          <img src={Asterisk} alt="Asterisk" />
+        </div>
+      </footer>
     </main>
   );
 }
